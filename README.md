@@ -10,3 +10,4 @@ To see what can happen when you do not use atomic writes, change the write threa
         write_status_safe(new_status, new_message, status_file)
         # write_status_unsafe(new_status, new_message, status_file)
 ```
+A note on concurrency - this demo/test is all written in a single file for convenience, but that means it is subject to the GIL. Therefor it uses multiprocessing to test concurrent reads/writes instead of threads. A similar argument applies to async/coroutines as well, plus aiofile is usually slower than standard sync file IO in python.
